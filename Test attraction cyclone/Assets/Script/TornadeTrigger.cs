@@ -17,8 +17,20 @@ public class TornadeTrigger : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    
-        //Mises en cache:
+
+    [Header("Paramètres du player")]
+    public float stiffness = 25f;
+    public float verticalForce = 2f;
+    public float rotationSpeed = 10f;
+    public float tangentialMultiplier = 1f;
+    public float radius = -15f;
+    public float Inertia = 0f;
+    public float verticalRestrict = 2;
+
+    [Header("Références")]
+    public Transform tornadoCenter;
+
+    //Mises en cache:
     private void OnTriggerEnter(Collider other)
     {
        RS = other.GetComponent<RotationScript>();
@@ -34,12 +46,24 @@ public class TornadeTrigger : MonoBehaviour
         {
             RS.target = transform;
             RS.enabled = true;
-            RS.Inertia = other.GetComponent<RotationScript>().Inertia + 10f;
+            Inertia = Inertia + 10f;
             Dép.enabled = false;
             TorCon.enabled = true;
             speedo = rb.linearVelocity;
-        } 
-       
+        }
+
+        if (!other.CompareTag("Player")) return;
+        {
+            var rotationScript = other.GetComponent<RotationScript>();
+            rotationScript.target = tornadoCenter;
+            rotationScript.stiffness = stiffness;
+            rotationScript.rotationSpeed = rotationSpeed;
+            rotationScript.tangentialMultiplier = tangentialMultiplier;
+            rotationScript.radius = radius;
+            rotationScript.enabled = true;
+            rotationScript.Inertia = Inertia;
+            rotationScript.verticalRestrict = verticalRestrict;
+        }
     }
         //GroundCheck: (pour qu'il n'active les déplacements qu'une foi au sol)
     private void LateUpdate()

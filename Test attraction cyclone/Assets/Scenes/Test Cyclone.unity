@@ -176,9 +176,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 506651211}
     - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: radius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: Inertia
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: stiffness
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 203534032}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: tornadoCenter
+      value: 
+      objectReference: {fileID: 1597891544}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: verticalForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: verticalRestrict
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7889062845407131948, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1367,6 +1395,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &767015889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7163569925602910405, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+  m_PrefabInstance: {fileID: 2283891924402218129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &879227817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,6 +1819,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5803127294367236797, guid: 11c26dd442751944db5db6d7644be675, type: 3}
   m_PrefabInstance: {fileID: 2232516571081221303}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1597891544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7163569925602910405, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+  m_PrefabInstance: {fileID: 29986332}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1656157393
 GameObject:
@@ -2531,9 +2569,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 506651211}
     - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: radius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: Inertia
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: stiffness
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 203534032}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: rotationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: tornadoCenter
+      value: 
+      objectReference: {fileID: 767015889}
+    - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
+      propertyPath: verticalForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5115729117015853421, guid: d28bdb52bf488c74ea6cd1414f6159b0, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 64
