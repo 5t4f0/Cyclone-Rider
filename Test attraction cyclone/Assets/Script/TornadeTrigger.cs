@@ -65,24 +65,16 @@ public class TornadeTrigger : MonoBehaviour
             rotationScript.verticalRestrict = verticalRestrict;
         }
     }
-        //GroundCheck: (pour qu'il n'active les déplacements qu'une foi au sol)
+        
     private void LateUpdate()
     {
-        // if (rb != null)
-        // {
-        //     Debug.DrawLine(rb.transform.position, speedo, Color.red);
-        // }
-        // else
-        // {
-        //     return;
-        // }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
         if (isGrounded)
         {
             Dép.enabled = true;
         }
     }
-        //Simili State Machine 2
+        
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
