@@ -125,6 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6751e284a4deece4fa3e73b63033aea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "D\xE9p": {fileID: 0}
+  groundCheckRadius: 0.2
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  stiffness: 80
+  verticalForce: 30
+  rotationSpeed: 15
+  tangentialMultiplier: 1
+  radius: 2
+  Inertia: 0
+  verticalRestrict: 5
+  tornadoCenter: {fileID: 0}
 --- !u!1 &3992618813939231983
 GameObject:
   m_ObjectHideFlags: 0
