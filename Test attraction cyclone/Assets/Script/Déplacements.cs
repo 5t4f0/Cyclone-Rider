@@ -14,8 +14,8 @@ public class Déplacements : MonoBehaviour
 
     private bool isGrounded;
     private bool jumpRequest;
-    private float xinput;
-    private float yinput;
+    public float xinput;
+    public float yinput;
 
     private void Update()
     {
