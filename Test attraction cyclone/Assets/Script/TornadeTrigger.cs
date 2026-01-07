@@ -9,7 +9,6 @@ public class TornadeTrigger : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private Déplacements Dép;
     private TornadeController TorCon;
-    
     private Vector3 speedo;
     
         //Prepa GroundCheck

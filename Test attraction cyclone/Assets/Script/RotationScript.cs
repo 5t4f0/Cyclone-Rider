@@ -30,45 +30,48 @@ public class RotationScript : MonoBehaviour
         if (target == null) return;
 
         rb.useGravity = false;
-
-        // Centre de rotation horizontal
-        Vector3 rotationCenter = target.position;
-        rotationCenter.y = rb.position.y;
         
-        // Position relative et direction
+        var rotationCenter = SetRotationCenter();
+        
         Vector3  ToCenter = transform.position - rotationCenter;
         Vector3 TocenterN =  ToCenter.normalized;
         
-        // Force tangentielle
-        Vector3 tangent = Vector3.Cross(up,  ToCenter).normalized;
-        Vector3 tangentForce = tangent * rb.mass * radius * rotationSpeed * tangentialMultiplier;
-        rb.AddForce(tangentForce);
+        AddTangentForce(ToCenter);
         
-        // Position cible et force corrective (permet de tourner)
-        Vector3 desiredPos = rotationCenter - TocenterN * radius;
-        Vector3 ToDesired = desiredPos - rb.position;
-        rb.AddForce( ToDesired * stiffness);
+        AddLasso(rotationCenter, TocenterN);
         
-        // Force qui va vers le haut et vers l'horizontal (mises ensemble car sinon elles s'annulent)
+        AddUpAndFrontForce();
+
+        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, 15f);
+    }
+
+    private void AddUpAndFrontForce()
+    {
         Vector3 horizontalForward = transform.forward;
         horizontalForward.y = 0f;
         horizontalForward.Normalize();
         Vector3 totalForce = horizontalForward * Inertia + Vector3.up * (Inertia / verticalRestrict) ;
         rb.AddForce(totalForce, ForceMode.Acceleration);
-        
+    }
 
-        // 🔄 Rotation du joueur dans la direction de déplacement
-        // Vector3 flatVelocity = rb.linearVelocity;
-        // // flatVelocity.y = 0f;
-        // if (flatVelocity.sqrMagnitude > 0.1f)
-        // {
-        //     Quaternion targetRotation = Quaternion.LookRotation(flatVelocity.normalized, Vector3.up);
-        //     rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 5f));
-        //     
-        // }
-        // Debug.DrawRay(transform.position,rb.linearVelocity,Color.magenta);
+    private void AddLasso(Vector3 rotationCenter, Vector3 TocenterN)
+    {
+        Vector3 desiredPos = rotationCenter - TocenterN * radius;
+        Vector3 ToDesired = desiredPos - rb.position;
+        rb.AddForce( ToDesired * stiffness);
+    }
 
-        // limitateur de vitesse
-        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, 15f);
+    private void AddTangentForce(Vector3 ToCenter)
+    {
+        Vector3 tangent = Vector3.Cross(up,  ToCenter).normalized;
+        Vector3 tangentForce = tangent * rb.mass * radius * rotationSpeed * tangentialMultiplier;
+        rb.AddForce(tangentForce);
+    }
+
+    private Vector3 SetRotationCenter()
+    {
+        Vector3 rotationCenter = target.position;
+        rotationCenter.y = rb.position.y;
+        return rotationCenter;
     }
 }
